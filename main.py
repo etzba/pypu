@@ -24,7 +24,7 @@ def get_locations_endpoint():
 @app.route('/locations', methods=(['POST']))
 def post_locations_endpoint():
     data = request.get_json()
-    resp = post_location(data)
+    resp = Location.post_location(data)
     return jsonify(resp), 201
 
 if __name__ == '__main__':

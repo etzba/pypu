@@ -1,0 +1,10 @@
+api:
+- url: http://localhost:5000/locations
+  method: GET
+- url: http://localhost:5000/locations
+  method: POST
+  data:
+    name: {{ getRandStringInLength 5 }}
+    address: {{ getRandStringInLength 23 }}
+    longtitude: {{ getFloatInRange 70 90 }}
+    latitude: {{ getFloatInRange -80 -60 }}
