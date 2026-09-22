@@ -46,12 +46,12 @@ jobs:
       with:
         python-version: ${{ matrix.python-version }}
     - name: Install dependencies
-      run: pip3 install -U pip setuptools
-    - name: Install requirements
-      run: pip3 install -U -r requirements.txt
-    - run: export PATH=/home/runner/.local/bin/$PATH
-    - name: Run pylint
-      run: pylint --rcfile=.pylintrc src/
+      run: |
+        python -m pip install --upgrade pip
+        pip install pylint
+    - name: Analysing the code with pylint
+      run: |
+        pylint $(git ls-files '*.py')
 
   build-container:
     name: Build and push container image
