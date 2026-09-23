@@ -1,3 +1,4 @@
+""" main """
 import os
 from flask import Flask, jsonify, request
 from dotenv import load_dotenv
@@ -15,6 +16,9 @@ app = Flask(__name__)
 
 @app.route('/locations', methods=(['GET']))
 def get_locations_endpoint():
+    """
+    Endpoint to get all locations
+    """
     data = Location.get_locations()
     resp = {
         "locations": data,
@@ -23,8 +27,11 @@ def get_locations_endpoint():
 
 @app.route('/locations', methods=(['POST']))
 def post_locations_endpoint():
+    """
+    Endpoint for posting a new location
+    """
     data = request.get_json()
-    resp = post_location(data)
+    resp = Location.post_location(data)
     return jsonify(resp), 201
 
 if __name__ == '__main__':

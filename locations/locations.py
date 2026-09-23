@@ -2,6 +2,9 @@
 LOCATIONS=[]
 
 class Location:
+    """
+    Location is a place with a name, address and coordinates
+    """
     def __init__(self, name, address, longtitude, latitude):
         self.name = name
         self.address = address
@@ -15,5 +18,8 @@ class Location:
         return LOCATIONS
 
     def post_location(location: dict) -> dict:
+        """
+        Post a new location in app memory
+        """
         LOCATIONS.append(location)
         return location
